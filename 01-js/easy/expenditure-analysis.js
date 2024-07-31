@@ -14,7 +14,20 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  return transactions.reduce((accum, transaction) => {
+    const category = accum.find(
+      (item) => item.category === transaction.category
+    );
+    if (category) {
+      category.totalSpent += transaction.price;
+    } else {
+      accum.push({
+        category: transaction.category,
+        totalSpent: transaction.price,
+      });
+    }
+    return accum;
+  }, []);
 }
 
 module.exports = calculateTotalSpentByCategory;
