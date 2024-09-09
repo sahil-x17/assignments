@@ -45,5 +45,3 @@ module.exports = {
   User,
   Course,
 };
-
-app.listen(3000);
