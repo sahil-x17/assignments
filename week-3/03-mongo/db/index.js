@@ -32,6 +32,8 @@ const CourseSchema = new mongoose.Schema({
 
 app.post("admin/signup", async (req, res) => {
   const username = req.body.username;
+  const password = req.body.password;
+  const name = req.body.name;
 });
 
 const Admin = mongoose.model("Admin", AdminSchema);
