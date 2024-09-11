@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const express = require("express");
-const app = express();
 
 // Connect to MongoDB
 mongoose.connect(
@@ -18,22 +16,20 @@ const UserSchema = new mongoose.Schema({
   // Schema definition here
   username: String,
   password: String,
+  purchasedCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
 });
 
 const CourseSchema = new mongoose.Schema({
   // Schema definition here
-  id: Number,
   title: String,
   description: String,
   price: Number,
   imageLink: String,
-  published: Boolean,
-});
-
-app.post("admin/signup", async (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  const name = req.body.name;
 });
 
 const Admin = mongoose.model("Admin", AdminSchema);
