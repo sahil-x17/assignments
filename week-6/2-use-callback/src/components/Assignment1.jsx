@@ -7,12 +7,20 @@ export function Assignment1() {
 
     // Your code starts here
     const handleIncrement = useCallback(() => {
-        setCount(count => count + 1)
-    }, [])
+        setCount(function (currentCount) {
+            return currentCount + 1;
+        })
+    },)
+
+    // setCount(count - 1) --> here we requrie to write dependancy count
+    // setCount(function (currentCount) {
+    //     return currentCount + 1;
+    // }) and setCount(count => count - 1) --> if we write it as a function , we don't need to wirte dependancy
+
 
     const handleDecrement = useCallback(() => {
         setCount(count => count - 1)
-    }, [])
+    },)
     // Your code ends here
 
     return (
